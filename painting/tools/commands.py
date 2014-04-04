@@ -17,4 +17,4 @@ def do_block(block):
 def paint_all(blocks):
     return "\n".join(map(do_block, blocks))
 
-print paint_all([[[0, 10], [100, 100]]])
+print paint_all([[[0, 10], [101, 100]], [[0, 10], [100, 103]]])
