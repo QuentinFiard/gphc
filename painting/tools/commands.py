@@ -1,5 +1,16 @@
-from cmdgen import to_rcs
+def to_rcs(coords):
+  i = coords[0][0]
+  j = coords[0][1]
+  k = coords[1][0]
+  l = coords[0][1]
 
+  s = (k - i - 1)/2
+  if s < 0:
+    s = 0
+  r = i + s
+  c = j + s
+
+  return [r, c, s]
 
 def do_block(block):
     """
@@ -16,5 +27,3 @@ def do_block(block):
 
 def paint_all(blocks):
     return "\n".join(map(do_block, blocks))
-
-print paint_all([[[0, 10], [101, 100]], [[0, 10], [100, 103]]])

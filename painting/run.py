@@ -1,4 +1,5 @@
 import tools.parser as ps
+import tools.commands as cmd
 
 def dumb(matrix):
   block = []
@@ -17,3 +18,5 @@ def dumb(matrix):
 matrix = ps.file_to_matrix('data/doodle.txt')
 
 [block, erased] = dumb(matrix)
+
+print cmd.paint_all(block)
