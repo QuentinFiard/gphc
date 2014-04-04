@@ -6,11 +6,11 @@ def dumb(matrix):
   i = 0
   j = 0
   for line in matrix:
-    i += 1
     for char in line:
-      j += 1
       if char:
         block.append([[i, j], [i, j]])
+      j += 1
+    i += 1
     j = 0
   return [block, []]
 
@@ -21,4 +21,4 @@ matrix = ps.file_to_matrix('data/doodle.txt')
 
 print cmd.count(block, erased)
 print cmd.paint_all(block).rstrip('\n')
-print cmd.erase_all(block)
+print cmd.erase_all(erased)
