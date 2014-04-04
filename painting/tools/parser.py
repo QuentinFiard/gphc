@@ -12,5 +12,3 @@ def file_to_matrix(filename):
       matrix_buffer.append(line_buffer)
     f.close
   return matrix_buffer
-
-print file_to_matrix('../data/simple.txt')
