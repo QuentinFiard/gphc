@@ -1,6 +1,9 @@
 import numpy as np
 
 
+def paint(block):
+    R, C, S = block
+    return "PAINSTSQ %i %i 0
 def paint_block(block):
     """"
     Generates commands for blocks (numpy array)
@@ -49,3 +52,7 @@ def gencmd(blocks, K=None):
 
 
 print gencmd([np.eye(10)])
+d = open(sys.arg[1]
+from parser import file_to_matrix
+
+print file_to_matrix(
