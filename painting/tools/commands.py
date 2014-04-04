@@ -28,5 +28,13 @@ def do_block(block):
     return 'PAINTSQ %i %i %i' % (R, C, S)
 
 
+def erase(cell):
+    return "ERASECELL %i %i" % cell
+
+
+def erase_all(cells):
+    return "\n".join(map(erase, cells))
+
+
 def paint_all(blocks):
     return "\n".join(map(do_block, blocks))
