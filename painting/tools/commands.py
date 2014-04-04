@@ -11,7 +11,7 @@ def do_block(block):
 
     R, C, S = to_rcs(block)
 
-    return 'PAINSTSQ %i %i %i' % (R, C, S)
+    return 'PAINTSQ %i %i %i' % (R, C, S)
 
 
 def erase(cell):
