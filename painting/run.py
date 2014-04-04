@@ -19,4 +19,5 @@ matrix = ps.file_to_matrix('data/doodle.txt')
 
 [block, erased] = dumb(matrix)
 
-print cmd.paint_all(block)
+print cmd.count(block, erased)
+print cmd.paint_all(block).rstrip('\n')

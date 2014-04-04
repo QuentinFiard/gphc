@@ -12,6 +12,9 @@ def to_rcs(coords):
 
   return [r, c, s]
 
+def count(block, erase):
+  return str(len(block) + len(erase))
+
 def do_block(block):
     """
     block is a triplet (R, C, S).
@@ -22,7 +25,7 @@ def do_block(block):
 
     R, C, S = to_rcs(block)
 
-    return 'PAINSTSQ %i %i %i' % (R, C, S)
+    return 'PAINTSQ %i %i %i' % (R, C, S)
 
 
 def paint_all(blocks):
