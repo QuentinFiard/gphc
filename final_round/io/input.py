@@ -16,10 +16,8 @@ def file_to_data(filename):
     for i in xrange(num_roads):
       values = f.readline().split()
       roads.append(st.Road(int(
-          values[0]), int(values[1]), float(values[3]), float(values[4])))
-      if int(values[2]) == 2:
-        roads.append(st.Road(int(
-            values[1]), int(values[0]), float(values[3]), float(values[4])))
+          values[0]), int(values[1]), float(values[3]), float(values[4]),
+          int(values[2]) == 1))
     return st.Data(intersections, roads, max_time, start, num_cars)
 
 if __name__ == '__main__':
