@@ -1,6 +1,8 @@
 from tools import *
 import copy
 import random
+from stochastics import sample_neighbor
+
 
 def can_move(remainings):
   for remain in remainings:
