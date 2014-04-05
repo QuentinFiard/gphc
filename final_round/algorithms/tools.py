@@ -1,11 +1,19 @@
 import structures as struct
+from copy import deepcopy
 
 def to_dict(roads):
   d = {}
   for road in roads:
     if road.left not in d:
       d[road.left] = {}
+    if road.right not in d:
+      d[road.right] = {}
     d[road.left][road.right] = road
+    if not road.one_way:
+      inverted_road = deepcopy(road)
+      inverted_road.left = road.right
+      inverted_road.right = road.left
+      d[road.right][road.left] = inverted_road
   return d
 
 def neighbor_roads(intersect_idx, roads_dict):
@@ -68,7 +76,7 @@ def best_neighbor_road(intersect_idx, roads_dict):
   #     best = s
   #     i = j
   # return n[i]
-  
+
   # if len(n) > 0:
   #   ratio = n[0].distance / n[0].cost
   #   minimal = n[0]
@@ -121,5 +129,5 @@ def best_neighbor_path(intersect_idx, roads_dict, radius=1):
   if radius < 2:
     return net_ratio, paths
 
-  
+
     return None
