@@ -2,7 +2,9 @@ import io.input as input
 import io.output as output
 import algorithms.greedy as algo
 from algorithms.tools import to_dict
-import algorithms.best_local_path as algo
+
+# XXX dangerous (unstable) import follows
+# import algorithms.best_local_path as algo
 
 data = input.file_to_data('data/paris_54000.txt')
 vehicle_paths = algo.run(data)
