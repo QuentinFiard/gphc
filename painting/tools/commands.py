@@ -4,14 +4,27 @@ def to_rcs(coords):
   k = coords[1][0]
   l = coords[0][1]
 
+<<<<<<< Updated upstream
   s = (k - i)/2
+=======
+def to_rcs(coords):
+  i = coords[0][0]
+  j = coords[0][1]
+  k = coords[1][0]
+  l = coords[0][1]
+
+  s = (k - i - 1)/2
+>>>>>>> Stashed changes
   r = i + s
   c = j + s
 
   return [r, c, s]
+<<<<<<< Updated upstream
 
 def count(block, erase):
   return str(len(block) + len(erase))
+=======
+>>>>>>> Stashed changes
 
 def do_block(block):
     """

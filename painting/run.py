@@ -1,7 +1,10 @@
 import tools.parser as ps
 import tools.commands as cmd
+<<<<<<< Updated upstream
 import tools.bruteforce as btf
 import sys
+=======
+>>>>>>> Stashed changes
 
 def dumb(matrix):
   block = []
@@ -49,8 +52,14 @@ def optimized(matrix):
 
 matrix = ps.file_to_matrix('data/doodle.txt')
 
+<<<<<<< Updated upstream
 [block, erased] = optimized(matrix)
 
 print cmd.count(block, erased)
 print cmd.paint_all(block).rstrip('\n')
 print cmd.erase_all(erased)
+=======
+[block, erased] = dumb(matrix)
+
+print cmd.paint_all(block)
+>>>>>>> Stashed changes
