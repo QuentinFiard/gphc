@@ -14,7 +14,7 @@ def neighbor_roads(intersect_idx, roads_dict):
     neighbor_dict = roads_dict[intersect_idx]
     for key in neighbor_dict:
       list.append(neighbor_dict[key])
-    return neighbor_dict
+    return list
   else:
     return []
 
