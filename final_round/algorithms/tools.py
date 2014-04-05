@@ -68,7 +68,7 @@ def sample_neighbor(intersect_idx, roads_dict, max_cost):
   n = neighbor_roads(intersect_idx, roads_dict)
   n = [x for x in n if x.cost <= max_cost]
   if n:
-    scores = [1. / x.distance for x in n]
+    scores = [1. * x.cost / x.distance for x in n]
     # scores = np.reciprocal(scores)  # XXX risky business here
     return n[multinomial(scores)]
 
