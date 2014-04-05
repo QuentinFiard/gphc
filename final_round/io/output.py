@@ -1,4 +1,4 @@
-def output(vehicle_paths, show=False):
+def output(vehicle_paths, path_name=None):
     solution = []
     num_vehicles = len(vehicle_paths)
     solution.append(str(num_vehicles))
@@ -7,7 +7,11 @@ def output(vehicle_paths, show=False):
         solution.append(str(len(path)))
         solution += map(str, path)
 
-    print('\n'.join(solution))
+    if path_name is None:
+        print('\n'.join(solution))
+    else:
+        with open(path_name, 'w') as f:
+            f.write('\n'.join(solution))
 
 
 if __name__ == '__main__':
