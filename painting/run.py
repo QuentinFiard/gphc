@@ -1,8 +1,11 @@
 import tools.parser as ps
 import tools.commands as cmd
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 import tools.bruteforce as btf
 import sys
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 
@@ -62,4 +65,7 @@ print cmd.erase_all(erased)
 [block, erased] = dumb(matrix)
 
 print cmd.paint_all(block)
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
