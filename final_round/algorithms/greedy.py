@@ -1,4 +1,6 @@
 from tools import *
+import copy
+import random
 
 def can_move(remainings):
   for remain in remainings:
@@ -8,6 +10,7 @@ def can_move(remainings):
 
 def run(data):
   roads = to_dict(data.roads)
+  # orig_roads = copy.deepcopy(roads)
   orig_roads = to_dict(data.roads)
   remainings = []
   paths = []
@@ -25,10 +28,15 @@ def run(data):
         if not road:
           road = least_expensive_road(paths[car][-1], roads)
         if not road:
-          road = least_expensive_road(paths[car][-1], orig_roads)
-        if road.cost > remainings[car]:
+          nr =  neighbor_roads(paths[car][-1], orig_roads)
+
+          # sample from diffusion process on graph
+          if nr: road = random.choice(nr)
+
+          # road = best_neighbor_road(paths[car][-1], orig_roads)
+        if not road or road.cost > remainings[car]:
           road = None
-        if road:open
+        if road: # open
           paths[car].append(road.right)
           remainings[car] -= road.cost
           try:
