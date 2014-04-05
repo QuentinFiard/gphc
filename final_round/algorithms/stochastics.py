@@ -1,4 +1,5 @@
 import numpy as np
+from tools import *
 
 
 def multinomial(probs):

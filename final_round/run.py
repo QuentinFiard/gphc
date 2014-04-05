@@ -1,10 +1,14 @@
+import sys
+
 import io.input as input
 import io.output as output
-import algorithms.best_local_path as algo
-from algorithms.tools import to_dict
+import algorithms.greedy as algo
+from autorun import get_score
+
 
 data = input.file_to_data('data/paris_54000.txt')
 vehicle_paths = algo.run(data)
+sys.stderr.write("%f\n" % get_score(data, vehicle_paths))
 output.output(vehicle_paths)
 # print "#" * 100
 # score = 0

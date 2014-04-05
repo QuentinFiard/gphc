@@ -15,6 +15,16 @@ def simple_split(g, n):
     [a, b] = simple_split(g, 2)
     return simple_split(a, n / 2) + simple_split(b, n / 2)
 
+def remove_impasses(graph):
+  nodes = graph.nodes()
+  has_invalid = False
+  for node in nodes:
+    if len(graph[node]) == 0:
+      has_invalid = True
+      graph.remove_node(node)
+  if has_invalid:
+    remove_impasses(graph)
+
 def geo_split(g, n):
   check_power_of_2(n)
   if n == 1:
@@ -34,4 +44,6 @@ def geo_split(g, n):
   nodes = map(lambda pair: pair[0], nodes)
   a = g.subgraph(nodes[:len(nodes)/2])
   b = g.subgraph(nodes[len(nodes)/2:])
+  remove_impasses(a)
+  remove_impasses(b)
   return [a, b]

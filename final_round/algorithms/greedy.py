@@ -23,7 +23,7 @@ def run(data):
   while can_move(remainings):
     for car in range(data.num_cars):
       if remainings[car] > 0:
-        road = best_neighbor_road(paths[car][-1], roads, remainings[car])
+        road = sample_neighbor(paths[car][-1], roads, remainings[car])
         if not road:
           nr = neighbor_roads(paths[car][-1], orig_roads)
           nr = filter(lambda road: road.cost <= remainings[car], nr)
