@@ -1,6 +1,7 @@
 import structures as struct
 import numpy as np
 from copy import deepcopy
+import numpy as np
 
 
 def to_dict(roads):
