@@ -6,6 +6,11 @@ def to_dict(roads):
     if road.left not in d:
       d[road.left] = {}
     d[road.left][road.right] = road
+    if not road.one_way:
+      if road.right not in d:
+        d[road.right] = {}
+      d[road.right][road.left] = struct.Road(
+          road.right, road.left, road.cost, road.distance, road.one_way)
   return d
 
 def neighbor_roads(intersect_idx, roads_dict):
@@ -18,35 +23,26 @@ def neighbor_roads(intersect_idx, roads_dict):
   else:
     return []
 
-def opposite_road(road, roads_dict):
-  if road.right in roads_dict:
-    if road.left in roads_dict[road.right]:
-      return roads_dict[road.right][road.left]
-  return None
-
 def least_expensive_road(intersect_idx, roads_dict):
   n = neighbor_roads(intersect_idx, roads_dict)
-  if len(n) > 0:
-    minimal = n[0]
-    for road in n:
-      if road.cost < minimal.cost:
-        minimal = road
-    return minimal
-  return None
+  minimal = None
+  for road in n:
+    if not minimal or road.cost < minimal.cost:
+      minimal = road
+  return minimal
 
-
-def best_neighbor_road(intersect_idx, roads_dict):
+def best_neighbor_road(intersect_idx, roads_dict, max_cost):
   n = neighbor_roads(intersect_idx, roads_dict)
-  if len(n) > 0:
-    ratio = n[0].distance / n[0].cost
-    minimal = n[0]
-    for road in n:
-      local_ratio = road.distance / road.cost
-      if local_ratio < ratio:
-        minimal = road
-        ratio = local_ratio
-    return minimal
-  return None
+  ratio = None
+  minimal = None
+  for road in n:
+    if road.cost > max_cost:
+      continue
+    local_ratio = road.distance / road.cost
+    if not ratio or local_ratio < ratio:
+      minimal = road
+      ratio = local_ratio
+  return minimal
 
   # n = neighbor_roads(intersect_idx, roads_dict)
   # p = get_paths_from(intersect_idx, roads_dict, radius = 1)
@@ -68,7 +64,7 @@ def best_neighbor_road(intersect_idx, roads_dict):
   #     best = s
   #     i = j
   # return n[i]
-  
+
   # if len(n) > 0:
   #   ratio = n[0].distance / n[0].cost
   #   minimal = n[0]
@@ -121,5 +117,4 @@ def best_neighbor_path(intersect_idx, roads_dict, radius=1):
   if radius < 2:
     return net_ratio, paths
 
-  
-    return None
+  return None
