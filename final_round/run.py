@@ -1,6 +1,6 @@
 import io.input as input
 import io.output as output
-import algorithms.greedy as algo
+import algorithms.best_local_path as algo
 from algorithms.tools import to_dict
 
 data = input.file_to_data('data/paris_54000.txt')

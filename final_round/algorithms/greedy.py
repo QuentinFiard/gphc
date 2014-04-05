@@ -24,6 +24,7 @@ def run(data):
         if 0x0:
           road = best_neighbor_road(paths[car][-1], roads, remainings[car])
         else:
+          # sample next node from ~ multinomial (cost_x / distance_x)_x \in neigh(cur_node)
           road = sample_neighbor(paths[car][-1], roads, remainings[car])
 
         if not road:

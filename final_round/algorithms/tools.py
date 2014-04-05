@@ -1,5 +1,6 @@
 import structures as struct
 import numpy as np
+from copy import deepcopy
 
 
 def to_dict(roads):
@@ -7,6 +8,8 @@ def to_dict(roads):
   for road in roads:
     if road.left not in d:
       d[road.left] = {}
+    if road.right not in d:
+      d[road.right] = {}
     d[road.left][road.right] = road
     if not road.one_way:
       if road.right not in d:
@@ -68,7 +71,7 @@ def sample_neighbor(intersect_idx, roads_dict, max_cost):
   n = neighbor_roads(intersect_idx, roads_dict)
   n = [x for x in n if x.cost <= max_cost]
   if n:
-    scores = [1. / x.distance for x in n]
+    scores = [1. * x.cost / x.distance for x in n]
     # scores = np.reciprocal(scores)  # XXX risky business here
     return n[multinomial(scores)]
 
@@ -145,5 +148,4 @@ def best_neighbor_path(intersect_idx, roads_dict, radius=1):
 
   if radius < 2:
     return net_ratio, paths
-
   return None
