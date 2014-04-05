@@ -9,6 +9,6 @@ def file_to_matrix(filename):
           line_buffer.append(False)
         elif char == '#':
           line_buffer.append(True)
-      matrix_buffer.append(line_buffer)
+      matrix_buffer.append(tuple(line_buffer))
     f.close
-  return matrix_buffer
+  return tuple(matrix_buffer)

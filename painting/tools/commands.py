@@ -4,9 +4,7 @@ def to_rcs(coords):
   k = coords[1][0]
   l = coords[0][1]
 
-  s = (k - i - 1)/2
-  if s < 0:
-    s = 0
+  s = (k - i)/2
   r = i + s
   c = j + s
 
