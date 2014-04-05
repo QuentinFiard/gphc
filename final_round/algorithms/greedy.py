@@ -21,7 +21,7 @@ def run(data):
   while can_move(remainings):
     for car in range(data.num_cars):
       if remainings[car] > 0:
-        if 0x0:
+        if random.random() < 0.:
           road = best_neighbor_road(paths[car][-1], roads, remainings[car])
         else:
           # sample next node from ~ multinomial (cost_x / distance_x)_x \in neigh(cur_node)
