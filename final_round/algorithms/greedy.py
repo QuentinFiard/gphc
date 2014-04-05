@@ -31,7 +31,11 @@ def run(data):
           nr =  neighbor_roads(paths[car][-1], orig_roads)
 
           # sample from diffusion process on graph
-          if nr: road = random.choice(nr)
+          if nr:
+            # road = random.choice(nr)
+            for _ in xrange(10):
+              random.shuffle(nr)
+            road = nr[0]
 
           # road = best_neighbor_road(paths[car][-1], orig_roads)
         if not road or road.cost > remainings[car]:
