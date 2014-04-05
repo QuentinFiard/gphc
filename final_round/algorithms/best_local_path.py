@@ -9,7 +9,7 @@ def can_move(remainings):
       return True
   return False
 
-def best_local_path(intersect_idx, roads, roads_o, remaining, radius=4):
+def best_local_path(intersect_idx, roads, roads_o, remaining, radius=6):
   if radius == 0:
     return [[], 0, 0, 0]
   min_cost = sys.maxint
@@ -42,11 +42,11 @@ def best_local_path(intersect_idx, roads, roads_o, remaining, radius=4):
     path = [road.right] + path
     cost += road.cost
     distance += road.distance
-    if float(distance) / (cost + malus) > float(max_distance) / min_cost and remaining > cost:
+    if float(distance) / (cost + malus) > float(max_distance) / (min_cost + best_malus) and remaining > cost:
       best_path = path
       min_cost = cost
       max_distance = distance
-      best_malus = malus + malus_active * cost
+      best_malus = malus
 
   try:
     roads[intersect_idx].pop(best_path[0])
@@ -56,6 +56,7 @@ def best_local_path(intersect_idx, roads, roads_o, remaining, radius=4):
     roads[best_path[0]].pop(intersect_idx)
   except:
     pass
+  best_malus += malus_active * cost
   return [best_path, min_cost, max_distance, best_malus]
 
 
