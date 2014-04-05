@@ -2,18 +2,20 @@ import io.input as input
 import io.output as output
 import sys
 import algorithms.greedy as algo
+from algorithms.tools import to_dict
 
 
 def get_score(data, vehicle_paths):
-    N = len(vehicle_paths)
+    roads = to_dict(data.roads)
     score = 0
-    visited = {}
-    for v_path in vehicle_paths:
-        for i in v_path:
-            road = data.roads[i]
-            if road in visited:
+    visited = set()
+    for path in vehicle_paths:
+        for i in xrange(len(path) - 1):
+            road = roads[path[i]][path[i + 1]]
+            edge = (min(road.left, road.right), max(road.left, road.right))
+            if edge in visited:
                 continue
-            visited[road] = True
+            visited.add(edge)
             score += road.distance
     return score
 
