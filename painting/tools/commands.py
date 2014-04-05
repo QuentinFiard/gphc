@@ -1,5 +1,17 @@
-from cmdgen import to_rcs
+def to_rcs(coords):
+  i = coords[0][0]
+  j = coords[0][1]
+  k = coords[1][0]
+  l = coords[0][1]
 
+  s = (k - i)/2
+  r = i + s
+  c = j + s
+
+  return [r, c, s]
+
+def count(block, erase):
+  return str(len(block) + len(erase))
 
 def do_block(block):
     """
@@ -24,6 +36,3 @@ def erase_all(cells):
 
 def paint_all(blocks):
     return "\n".join(map(do_block, blocks))
-
-print paint_all([[[0, 10], [101, 100]], [[0, 10], [100, 103]]])
-print erase_all([(4, 3), (0, 1)])
