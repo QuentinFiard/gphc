@@ -11,7 +11,7 @@ def file_to_data(filename):
     intersections = []
     for i in xrange(num_intersections):
       values = f.readline().split()
-      intersections.append(st.Intersection(float(values[0], values[1])))
+      intersections.append(st.Intersection(float(values[0]), float(values[1])))
     roads = []
     for i in xrange(num_roads):
       values = f.readline().split()
@@ -21,3 +21,6 @@ def file_to_data(filename):
         roads.append(st.Road(int(
             values[1]), int(values[0]), float(values[3]), float(values[4])))
     return st.Data(intersections, roads, max_time, start, num_cars)
+
+if __name__ == '__main__':
+  print file_to_data("data/paris_54000.txt").start
