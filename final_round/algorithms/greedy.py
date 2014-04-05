@@ -33,7 +33,7 @@ def run(data):
           # sample from diffusion process on graph
           if nr:
             # road = random.choice(nr)
-            for _ in xrange(5):
+            for _ in xrange(10):
               random.shuffle(nr)
             road = nr[0]
 
