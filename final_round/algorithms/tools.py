@@ -23,3 +23,13 @@ def opposite_road(road, roads_dict):
     if road.left in roads_dict[road.right]:
       return roads_dict[road.right][road.left]
   return None
+
+def least_expensive_road(intersect_idx, roads_dict):
+  n = neighbor_roads(intersect_idx, roads_dict)
+  if len(n) > 0:
+    minimal = n[0]
+    for road in n:
+      if road.cost < minimal.cost:
+        minimal = road
+    return minimal
+  return None
