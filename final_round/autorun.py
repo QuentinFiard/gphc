@@ -17,19 +17,20 @@ def get_score(data, vehicle_paths):
             score += road.distance
     return score
 
-data = input.file_to_data('data/paris_54000.txt')
-N = int(sys.argv[1])
-best_score = 0
+if __name__ == '__main__':
+    data = input.file_to_data('data/paris_54000.txt')
+    N = int(sys.argv[1])
+    best_score = 0
 
-for i in range(N):
-    vehicle_paths = algo.run(data)
-    score = get_score(data, vehicle_paths)
-    if score > best_score:
-        best_score = score
-        best_result = vehicle_paths
+    for i in range(N):
+        vehicle_paths = algo.run(data)
+        score = get_score(data, vehicle_paths)
+        if score > best_score:
+            best_score = score
+            best_result = vehicle_paths
 
-path_name = "answers/answer.txt"
-print best_score
-output.output(vehicle_paths, path_name)
+    path_name = "answers/answer.txt"
+    print best_score
+    output.output(vehicle_paths, path_name)
 
 
