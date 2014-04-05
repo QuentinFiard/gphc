@@ -7,11 +7,12 @@ class Intersection(object):
 
 class Road(object):
   """A road"""
-  def __init__(self, left, right, cost, distance):
+  def __init__(self, left, right, cost, distance, one_way):
     self.left = left
     self.right = right
     self.cost = cost
     self.distance = distance
+    self.one_way = one_way
 
 
 class Data(object):
