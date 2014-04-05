@@ -9,9 +9,9 @@ def to_networkx(data):
   for road in data.roads:
     g.add_edge(
         road.left, road.right, cost=road.cost, distance=road.distance,
-        one_way=road.one_way)
+        one_way=road.one_way, weight=road.distance / road.cost)
     if not road.one_way:
       g.add_edge(
           road.right, road.left, cost=road.cost, distance=road.distance,
-          one_way=road.one_way)
+          one_way=road.one_way, weight=road.distance / road.cost)
   return g
