@@ -11,7 +11,7 @@ class Road(object):
     self.left = left
     self.right = right
     self.cost = cost
-    self.distance
+    self.distance = distance
 
 
 class Data(object):
